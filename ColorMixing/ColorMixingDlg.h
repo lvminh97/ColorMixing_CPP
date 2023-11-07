@@ -24,6 +24,7 @@ public:
 // Implementation
 protected:
 	HICON m_hIcon;
+	CStatic* colorDataFilenameStatic;
 
 	// Generated message map functions
 	virtual BOOL OnInitDialog();
@@ -31,4 +32,9 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+
+	void componentMapping(void);
+
+public:
+	afx_msg void OnBnClickedButtonImportColorData();
 };

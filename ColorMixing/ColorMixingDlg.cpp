@@ -65,6 +65,7 @@ BEGIN_MESSAGE_MAP(CColorMixingDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_BUTTON_IMPORT_COLOR_DATA, &CColorMixingDlg::OnBnClickedButtonImportColorData)
 END_MESSAGE_MAP()
 
 
@@ -100,6 +101,7 @@ BOOL CColorMixingDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
+	componentMapping();
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -153,3 +155,19 @@ HCURSOR CColorMixingDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+void CColorMixingDlg::componentMapping(void)
+{
+	colorDataFilenameStatic = (CStatic*)GetDlgItem(IDC_STATIC_COLOR_DATA_FILENAME);
+}
+
+void CColorMixingDlg::OnBnClickedButtonImportColorData()
+{
+	const TCHAR szFilter[] = _T("Text files (*.txt)|*.txt");
+	CFileDialog dlg(TRUE, _T("txt"), NULL, OFN_READONLY, szFilter, this);
+	if (dlg.DoModal() == IDOK)
+	{
+		CString sFilePath = dlg.GetPathName();
+		CString sFileName = dlg.GetFileName();
+		colorDataFilenameStatic->SetWindowTextW(sFileName);
+	}
+}
