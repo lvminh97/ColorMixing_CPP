@@ -9,7 +9,7 @@
 #define IDR_MAINFRAME                   128
 #define IDC_BUTTON_IMPORT_COLOR_DATA    1000
 #define IDC_BUTTON_COMPUTE              1001
-#define IDC_EDIT1                       1004
+#define IDC_EDIT_COLOR_DATA             1004
 #define IDC_STATIC_COLOR_DATA_FILENAME  1005
 
 // Next default values for new objects

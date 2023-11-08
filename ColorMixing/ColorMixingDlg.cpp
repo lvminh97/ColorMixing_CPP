@@ -20,15 +20,15 @@ class CAboutDlg : public CDialogEx
 public:
 	CAboutDlg();
 
-// Dialog Data
+	// Dialog Data
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_ABOUTBOX };
 #endif
 
-	protected:
+protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
-// Implementation
+	// Implementation
 protected:
 	DECLARE_MESSAGE_MAP()
 };
@@ -158,6 +158,7 @@ HCURSOR CColorMixingDlg::OnQueryDragIcon()
 void CColorMixingDlg::componentMapping(void)
 {
 	colorDataFilenameStatic = (CStatic*)GetDlgItem(IDC_STATIC_COLOR_DATA_FILENAME);
+	colorDataEdit = (CEdit*)GetDlgItem(IDC_EDIT_COLOR_DATA);
 }
 
 void CColorMixingDlg::OnBnClickedButtonImportColorData()
@@ -168,6 +169,40 @@ void CColorMixingDlg::OnBnClickedButtonImportColorData()
 	{
 		CString sFilePath = dlg.GetPathName();
 		CString sFileName = dlg.GetFileName();
+		// read file
+		std::ifstream colorFile;
+		colorFile.open(CT2A(sFilePath));
+		if (colorFile.is_open() == FALSE)
+		{
+			MessageBox(CA2W("Can not open the data file"), CA2W("Error"));
+			return;
+		}
+
+		std::string tmpLine = "";
+		double tmpDouble = 0;
+		int index = 0;
+		while (std::getline(colorFile, tmpLine))
+		{
+			try
+			{
+				tmpDouble = std::stod(tmpLine);
+			}
+			catch (const std::exception&)
+			{
+				MessageBox(CA2W("The format of input data file is not valid"), CA2W("Error"));
+				return;
+			}
+			
+			inputColor.setDataAt(index, tmpDouble);
+			index++;
+		}
+		if (index != 31)
+		{
+			MessageBox(CA2W("The format of input data file is not valid"), CA2W("Error"));
+			return;
+		}
+		
 		colorDataFilenameStatic->SetWindowTextW(sFileName);
+		colorDataEdit->SetWindowTextW(CA2W(inputColor.getReflectionString().c_str()));
 	}
 }

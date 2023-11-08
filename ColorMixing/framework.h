@@ -28,12 +28,9 @@
 
 #include <afxcontrolbars.h>     // MFC support for ribbons and control bars
 
-
-
-
-
-
-
+#include <iostream>
+#include <fstream>
+#include <string>
 
 
 #ifdef _UNICODE

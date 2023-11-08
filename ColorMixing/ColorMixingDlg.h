@@ -4,27 +4,33 @@
 
 #pragma once
 
+#include "Colors.h"
+
 
 // CColorMixingDlg dialog
 class CColorMixingDlg : public CDialogEx
 {
-// Construction
+	// Construction
 public:
 	CColorMixingDlg(CWnd* pParent = nullptr);	// standard constructor
 
-// Dialog Data
+	// Dialog Data
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_COLORMIXING_DIALOG };
 #endif
 
-	protected:
+protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
 
 
-// Implementation
+	// Implementation
+private:
+	Colors inputColor;
+
 protected:
 	HICON m_hIcon;
-	CStatic* colorDataFilenameStatic;
+	CStatic* colorDataFilenameStatic = NULL;
+	CEdit* colorDataEdit = NULL;
 
 	// Generated message map functions
 	virtual BOOL OnInitDialog();
@@ -33,7 +39,7 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
 
-	void componentMapping(void);
+		void componentMapping(void);
 
 public:
 	afx_msg void OnBnClickedButtonImportColorData();
