@@ -59,6 +59,7 @@ CColorMixingDlg::CColorMixingDlg(CWnd* pParent /*=nullptr*/)
 void CColorMixingDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_CHART_CTRL, m_ChartCtrl);
 }
 
 BEGIN_MESSAGE_MAP(CColorMixingDlg, CDialogEx)
@@ -66,6 +67,7 @@ BEGIN_MESSAGE_MAP(CColorMixingDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BUTTON_IMPORT_COLOR_DATA, &CColorMixingDlg::OnBnClickedButtonImportColorData)
+	ON_BN_CLICKED(IDC_BUTTON_COMPUTE, &CColorMixingDlg::OnBnClickedButtonCompute)
 END_MESSAGE_MAP()
 
 
@@ -159,6 +161,13 @@ void CColorMixingDlg::componentMapping(void)
 {
 	colorDataFilenameStatic = (CStatic*)GetDlgItem(IDC_STATIC_COLOR_DATA_FILENAME);
 	colorDataEdit = (CEdit*)GetDlgItem(IDC_EDIT_COLOR_DATA);
+
+	CChartStandardAxis* pBottomAxis = m_ChartCtrl.CreateStandardAxis(CChartCtrl::BottomAxis);
+	pBottomAxis->SetMinMax(380, 760);
+	CChartStandardAxis* pLeftAxis = m_ChartCtrl.CreateStandardAxis(CChartCtrl::LeftAxis);
+	pLeftAxis->SetMinMax(0, 1.5);
+	m_ChartCtrl.GetTitle()->AddString(_T("Color's reflection"));
+	m_ChartCtrl.SetZoomEnabled(FALSE);
 }
 
 void CColorMixingDlg::OnBnClickedButtonImportColorData()
@@ -204,5 +213,19 @@ void CColorMixingDlg::OnBnClickedButtonImportColorData()
 		
 		colorDataFilenameStatic->SetWindowTextW(sFileName);
 		colorDataEdit->SetWindowTextW(CA2W(inputColor.getReflectionString().c_str()));
+	}
+}
+
+
+void CColorMixingDlg::OnBnClickedButtonCompute()
+{
+	m_ChartCtrl.RemoveAllSeries();
+	CChartLineSerie* m_pLineSeries = m_ChartCtrl.CreateLineSerie(false, false);
+	m_pLineSeries->SetColor(0x0000FF);
+	m_pLineSeries->SetWidth(2);
+
+	for (int i = 0; i < 31; i++)
+	{
+		m_pLineSeries->AddPoint(400 + i * 10, inputColor.getDataAt(i));
 	}
 }

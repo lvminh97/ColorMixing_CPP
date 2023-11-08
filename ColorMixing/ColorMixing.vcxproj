@@ -165,6 +165,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -183,6 +184,37 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ChartLib\ChartAxis.h" />
+    <ClInclude Include="ChartLib\ChartAxisLabel.h" />
+    <ClInclude Include="ChartLib\ChartBalloonLabel.h" />
+    <ClInclude Include="ChartLib\ChartBarSerie.h" />
+    <ClInclude Include="ChartLib\ChartCandlestickSerie.h" />
+    <ClInclude Include="ChartLib\ChartCrossHairCursor.h" />
+    <ClInclude Include="ChartLib\ChartCtrl.h" />
+    <ClInclude Include="ChartLib\ChartCursor.h" />
+    <ClInclude Include="ChartLib\ChartDateTimeAxis.h" />
+    <ClInclude Include="ChartLib\ChartDragLineCursor.h" />
+    <ClInclude Include="ChartLib\ChartFont.h" />
+    <ClInclude Include="ChartLib\ChartGanttSerie.h" />
+    <ClInclude Include="ChartLib\ChartGradient.h" />
+    <ClInclude Include="ChartLib\ChartGrid.h" />
+    <ClInclude Include="ChartLib\ChartLabel.h" />
+    <ClInclude Include="ChartLib\ChartLegend.h" />
+    <ClInclude Include="ChartLib\ChartLineSerie.h" />
+    <ClInclude Include="ChartLib\ChartLogarithmicAxis.h" />
+    <ClInclude Include="ChartLib\ChartMouseListener.h" />
+    <ClInclude Include="ChartLib\ChartPointsArray.h" />
+    <ClInclude Include="ChartLib\ChartPointsSerie.h" />
+    <ClInclude Include="ChartLib\ChartScrollBar.h" />
+    <ClInclude Include="ChartLib\ChartSerie.h" />
+    <ClInclude Include="ChartLib\ChartSerieBase.h" />
+    <ClInclude Include="ChartLib\ChartSeriesMouseListener.h" />
+    <ClInclude Include="ChartLib\ChartStandardAxis.h" />
+    <ClInclude Include="ChartLib\ChartString.h" />
+    <ClInclude Include="ChartLib\ChartSurfaceSerie.h" />
+    <ClInclude Include="ChartLib\ChartTitle.h" />
+    <ClInclude Include="ChartLib\ChartXYSerie.h" />
+    <ClInclude Include="ChartLib\PointsOrdering.h" />
     <ClInclude Include="ColorMixing.h" />
     <ClInclude Include="ColorMixingDlg.h" />
     <ClInclude Include="Colors.h" />
@@ -192,6 +224,29 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ChartLib\ChartAxis.cpp" />
+    <ClCompile Include="ChartLib\ChartAxisLabel.cpp" />
+    <ClCompile Include="ChartLib\ChartBarSerie.cpp" />
+    <ClCompile Include="ChartLib\ChartCandlestickSerie.cpp" />
+    <ClCompile Include="ChartLib\ChartCrossHairCursor.cpp" />
+    <ClCompile Include="ChartLib\ChartCtrl.cpp" />
+    <ClCompile Include="ChartLib\ChartCursor.cpp" />
+    <ClCompile Include="ChartLib\ChartDateTimeAxis.cpp" />
+    <ClCompile Include="ChartLib\ChartDragLineCursor.cpp" />
+    <ClCompile Include="ChartLib\ChartFont.cpp" />
+    <ClCompile Include="ChartLib\ChartGanttSerie.cpp" />
+    <ClCompile Include="ChartLib\ChartGradient.cpp" />
+    <ClCompile Include="ChartLib\ChartGrid.cpp" />
+    <ClCompile Include="ChartLib\ChartLegend.cpp" />
+    <ClCompile Include="ChartLib\ChartLineSerie.cpp" />
+    <ClCompile Include="ChartLib\ChartLogarithmicAxis.cpp" />
+    <ClCompile Include="ChartLib\ChartPointsSerie.cpp" />
+    <ClCompile Include="ChartLib\ChartScrollBar.cpp" />
+    <ClCompile Include="ChartLib\ChartSerie.cpp" />
+    <ClCompile Include="ChartLib\ChartStandardAxis.cpp" />
+    <ClCompile Include="ChartLib\ChartSurfaceSerie.cpp" />
+    <ClCompile Include="ChartLib\ChartTitle.cpp" />
+    <ClCompile Include="ChartLib\ChartXYSerie.cpp" />
     <ClCompile Include="ColorMixing.cpp" />
     <ClCompile Include="ColorMixingDlg.cpp" />
     <ClCompile Include="Colors.cpp" />
@@ -206,6 +261,10 @@
     <ResourceCompile Include="ColorMixing.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ChartLib\ChartBalloonLabel.inl" />
+    <None Include="ChartLib\ChartLabel.inl" />
+    <None Include="ChartLib\ChartPointsArray.inl" />
+    <None Include="ChartLib\ChartSerieBase.inl" />
     <None Include="res\ColorMixing.rc2" />
   </ItemGroup>
   <ItemGroup>

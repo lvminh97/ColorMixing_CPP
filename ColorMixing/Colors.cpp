@@ -35,14 +35,14 @@ double Colors::getDataAt(int index)
 
 std::string Colors::getReflectionString(void)
 {
-	std::string res = "Wavelength(nm)\t\tReflection\r\n";
+	std::string res = "Wavelength(nm)\t|\tReflection\r\n";
 	res += "------------------------------------------------------------------------------------";
 	char tmpBuf[30];
 
 	for (int i = 0; i < 31; i++)
 	{
 		res += "\r\n";
-		sprintf_s(tmpBuf, "\t%d\t\t%.4lf", 400 + i * 10, reflectionData[i]);
+		sprintf_s(tmpBuf, "\t%d\t|\t%.4lf", 400 + i * 10, reflectionData[i]);
 		res += tmpBuf;
 	}
 	return res;

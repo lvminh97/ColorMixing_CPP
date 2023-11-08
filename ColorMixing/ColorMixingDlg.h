@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include "ChartLib/ChartCtrl.h"
+#include "ChartLib/ChartLineSerie.h"
 #include "Colors.h"
 
 
@@ -31,6 +33,7 @@ protected:
 	HICON m_hIcon;
 	CStatic* colorDataFilenameStatic = NULL;
 	CEdit* colorDataEdit = NULL;
+	CChartCtrl m_ChartCtrl;
 
 	// Generated message map functions
 	virtual BOOL OnInitDialog();
@@ -43,4 +46,5 @@ protected:
 
 public:
 	afx_msg void OnBnClickedButtonImportColorData();
+	afx_msg void OnBnClickedButtonCompute();
 };
