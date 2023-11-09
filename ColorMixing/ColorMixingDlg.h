@@ -27,13 +27,17 @@ protected:
 
 	// Implementation
 private:
-	Colors inputColor;
-
-protected:
-	HICON m_hIcon;
 	CStatic* colorDataFilenameStatic = NULL;
 	CEdit* colorDataEdit = NULL;
 	CChartCtrl m_ChartCtrl;
+
+	Colors inputColor;
+
+private:
+	void setOutputColor(int nID, unsigned int rgb);
+
+protected:
+	HICON m_hIcon;
 
 	// Generated message map functions
 	virtual BOOL OnInitDialog();
@@ -42,7 +46,7 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
 
-		void componentMapping(void);
+	void componentMapping(void);
 
 public:
 	afx_msg void OnBnClickedButtonImportColorData();

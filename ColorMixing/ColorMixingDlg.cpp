@@ -168,6 +168,27 @@ void CColorMixingDlg::componentMapping(void)
 	pLeftAxis->SetMinMax(0, 1.5);
 	m_ChartCtrl.GetTitle()->AddString(_T("Color's reflection"));
 	m_ChartCtrl.SetZoomEnabled(FALSE);
+
+	setOutputColor(IDC_BUTTON_SHOW_SAMPLE_COLOR, 0xFFFFFF);
+	setOutputColor(IDC_BUTTON_SHOW_COMPUTED_COLOR, 0xFFFFFF);
+}
+
+void CColorMixingDlg::setOutputColor(int nID, unsigned int rgb)
+{
+	CButton* outputColorButton = (CButton*)GetDlgItem(nID);
+	CBitmap bmp;
+	CRect outputColorButtonSize;
+	outputColorButton->GetWindowRect(&outputColorButtonSize);
+	COLORREF* bmpData = new COLORREF[outputColorButtonSize.Width() * outputColorButtonSize.Height()];
+	for (int i = 0; i < outputColorButtonSize.Height(); i++)
+	{
+		for (int j = 0; j < outputColorButtonSize.Width(); j++)
+		{
+			bmpData[outputColorButtonSize.Width() * i + j] = RGB(rgb & 0xFF, (rgb >> 8) & 0xFF, (rgb >> 16) & 0xFF);
+		}
+	}
+	bmp.CreateBitmap(outputColorButtonSize.Width(), outputColorButtonSize.Height(), 1, 32, bmpData);
+	outputColorButton->SetBitmap(bmp);
 }
 
 void CColorMixingDlg::OnBnClickedButtonImportColorData()
@@ -228,4 +249,7 @@ void CColorMixingDlg::OnBnClickedButtonCompute()
 	{
 		m_pLineSeries->AddPoint(400 + i * 10, inputColor.getDataAt(i));
 	}
+
+	setOutputColor(IDC_BUTTON_SHOW_SAMPLE_COLOR, 0x00E01864);
+	setOutputColor(IDC_BUTTON_SHOW_COMPUTED_COLOR, 0x00A0E000);
 }
