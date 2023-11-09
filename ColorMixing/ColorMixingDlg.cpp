@@ -184,7 +184,7 @@ void CColorMixingDlg::setOutputColor(int nID, unsigned int rgb)
 	{
 		for (int j = 0; j < outputColorButtonSize.Width(); j++)
 		{
-			bmpData[outputColorButtonSize.Width() * i + j] = RGB(rgb & 0xFF, (rgb >> 8) & 0xFF, (rgb >> 16) & 0xFF);
+			bmpData[outputColorButtonSize.Width() * i + j] = rgb;
 		}
 	}
 	bmp.CreateBitmap(outputColorButtonSize.Width(), outputColorButtonSize.Height(), 1, 32, bmpData);
@@ -211,6 +211,7 @@ void CColorMixingDlg::OnBnClickedButtonImportColorData()
 		std::string tmpLine = "";
 		double tmpDouble = 0;
 		int index = 0;
+		inputColor.reset();
 		while (std::getline(colorFile, tmpLine))
 		{
 			try
@@ -250,6 +251,6 @@ void CColorMixingDlg::OnBnClickedButtonCompute()
 		m_pLineSeries->AddPoint(400 + i * 10, inputColor.getDataAt(i));
 	}
 
-	setOutputColor(IDC_BUTTON_SHOW_SAMPLE_COLOR, 0x00E01864);
+	setOutputColor(IDC_BUTTON_SHOW_SAMPLE_COLOR, inputColor.getRGB());
 	setOutputColor(IDC_BUTTON_SHOW_COMPUTED_COLOR, 0x00A0E000);
 }

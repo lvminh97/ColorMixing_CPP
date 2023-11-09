@@ -141,6 +141,12 @@
     <ClInclude Include="ChartLib\PointsOrdering.h">
       <Filter>ChartLib</Filter>
     </ClInclude>
+    <ClInclude Include="ColorParams.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ColorMixing.cpp">
