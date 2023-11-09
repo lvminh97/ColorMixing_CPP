@@ -171,6 +171,11 @@ void CColorMixingDlg::componentMapping(void)
 
 	setOutputColor(IDC_BUTTON_SHOW_SAMPLE_COLOR, 0xFFFFFF);
 	setOutputColor(IDC_BUTTON_SHOW_COMPUTED_COLOR, 0xFFFFFF);
+
+	ratioEdit = (CEdit*)GetDlgItem(IDC_EDIT_RATIO);
+
+	sampleCIELabStatic = (CStatic*)GetDlgItem(IDC_STATIC_CIELAB_SAMPLE);
+	computedCIELabStatic = (CStatic*)GetDlgItem(IDC_STATIC_CIELAB_COMPUTED);
 }
 
 void CColorMixingDlg::setOutputColor(int nID, unsigned int rgb)
@@ -253,4 +258,11 @@ void CColorMixingDlg::OnBnClickedButtonCompute()
 
 	setOutputColor(IDC_BUTTON_SHOW_SAMPLE_COLOR, inputColor.getRGB());
 	setOutputColor(IDC_BUTTON_SHOW_COMPUTED_COLOR, 0x00A0E000);
+
+	char tmpStr[50] = { 0 };
+	CIE_LAB LAB = inputColor.getLAB();
+	sprintf_s(tmpStr, "CIELAB = (%.2lf, %.2lf, %.2lf)", LAB.L, LAB.a, LAB.b);
+	sampleCIELabStatic->SetWindowTextW(CA2W(tmpStr));
+
+	ratioEdit->SetWindowTextW(CA2W("Color1: 19%\r\nColor2: 31%\r\nColor3: 22%\r\nColor4: 13%\r\nColor5:15%"));	//demo
 }

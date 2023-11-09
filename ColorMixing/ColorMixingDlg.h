@@ -28,7 +28,9 @@ protected:
 	// Implementation
 private:
 	CStatic* colorDataFilenameStatic = NULL;
+	CStatic* sampleCIELabStatic = NULL, * computedCIELabStatic = NULL;
 	CEdit* colorDataEdit = NULL;
+	CEdit* ratioEdit = NULL;
 	CChartCtrl m_ChartCtrl;
 
 	Colors inputColor;

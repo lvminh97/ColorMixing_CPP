@@ -127,10 +127,10 @@ void Colors::convert(void)
 	double K = 0;
 	for (int i = 0; i < 31; i++)
 	{
-		K += D65_ILL[i] * OBSVR[1][i];
-		XYZ.X += D65_ILL[i] * OBSVR[0][i] * reflectionData[i];
-		XYZ.Y += D65_ILL[i] * OBSVR[1][i] * reflectionData[i];
-		XYZ.Z += D65_ILL[i] * OBSVR[2][i] * reflectionData[i];
+		K += D65_ILL[i] * OBSVR_2[1][i];
+		XYZ.X += D65_ILL[i] * OBSVR_2[0][i] * reflectionData[i];
+		XYZ.Y += D65_ILL[i] * OBSVR_2[1][i] * reflectionData[i];
+		XYZ.Z += D65_ILL[i] * OBSVR_2[2][i] * reflectionData[i];
 	}
 	XYZ.X /= K;
 	XYZ.Y /= K;
